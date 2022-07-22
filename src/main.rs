@@ -7,11 +7,12 @@ const WIDTH: f32 = 500.;
 const HEIGHT: f32 = 500.;
 const X: f32 = 0.;
 const Y: f32 = 0.;
-const NUM_RAYS: u16 = 360;
+const NUM_RAYS: usize = 360;
 
 fn main() {
     App::new()
         .insert_resource(Msaa { samples: 4 })
+        .insert_resource(ClearColor(Color::hex("2e2e2e").unwrap()))
         .insert_resource(WindowDescriptor {
             title: "Ray casting test".to_string(),
             width: WIDTH,
@@ -92,48 +93,50 @@ fn get_intersect(ray: (Vec2, Vec2), walls: Vec<(Vec2, Vec2)>) -> Option<Vec2> {
         let numerator = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
         let t = t_denominator / numerator;
         let u = u_denominator / numerator;
-        if (0. <= t) && (t <= 1.) && (0. <= u) && (u <= 1.) {
+        if (0. ..=1.).contains(&t) && (0. ..=1.).contains(&u) {
             intersect_points.push(Vec2::new(x1 + t * (x2 - x1), y1 + t * (y2 - y1)));
         }
     });
-    // Doesn't have to check other intersections if only 1 exist
-    if &intersect_points.len() == &1_usize {
-        return Some(intersect_points[0]);
-    }
-    let mut distance_dict = Vec::<(Vec2, f32)>::new();
-    intersect_points.iter().for_each(|wall| {
-        distance_dict.push((
-            *wall,
-            (wall[0] - ray.0[0]).powf(2.) + (wall[1] - ray.0[1]).powf(2.),
-        ));
-    });
-    distance_dict.sort_by_key(|k| k.1 as u32);
-    let closest_intersect = distance_dict[0].0;
-
+    // Check if there are more than 1 intersections, then compare them and pick the shortest path
     if intersect_points.is_empty() {
         None
+    } else if intersect_points.len() == 1_usize {
+        Some(intersect_points[0])
     } else {
+        let mut distance_dict = Vec::<(Vec2, f32)>::new();
+        intersect_points.iter().for_each(|wall| {
+            distance_dict.push((
+                *wall,
+                (wall[0] - ray.0[0]).powf(2.) + (wall[1] - ray.0[1]).powf(2.),
+            ));
+        });
+        distance_dict.sort_by_key(|k| k.1 as u32);
+        let closest_intersect = distance_dict[0].0;
         Some(closest_intersect)
     }
 }
 
-fn cast_rays(origin: Vec2, points: Vec<(Vec2, Vec2)>, num: u16) -> Path {
-    let dest_angle = lin_space(0.0..=360.0, 5).map(|x| x).collect::<Vec<f32>>(); // TODO: don't forget to use this
+fn cast_rays(origin: Vec2, points: Vec<(Vec2, Vec2)>, num: usize) -> Path {
+    let dest_angle = lin_space(0.0..360.0, num).collect::<Vec<f32>>();
     let max_size = WIDTH.max(HEIGHT) as u16;
-    let dest_coord = direction_to_coord(max_size, 30.); // TODO:  change angle to dest_angle and add loop
-    let mut path_builder = PathBuilder::new();
-    path_builder.move_to(origin);
-    let final_dest = get_intersect((origin, dest_coord), points);
-    match final_dest {
-        None => path_builder.line_to(dest_coord),
-        Some(_) => path_builder.line_to(final_dest.unwrap()), // TODO: change to intersect
-    };
 
-    let line = path_builder.build();
-    line
+    let mut count = 0_usize;
+    let mut path_builder = PathBuilder::new();
+    while count < num {
+        // TODO: make it parallel!!!
+        let dest_coord = direction_to_coord(max_size, dest_angle[count]);
+        let final_dest = get_intersect((origin, dest_coord), points.clone());
+
+        path_builder.move_to(origin);
+        match final_dest {
+            Some(_) => path_builder.line_to(final_dest.unwrap()),
+            None => path_builder.line_to(dest_coord),
+        };
+        count += 1;
+    }
+    path_builder.build()
 }
 
-// Create simple scene with line(s) and source.
 fn setup_system(mut commands: Commands, asset_server: Res<AssetServer>) {
     let svg = asset_server.load("image.svg");
     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
@@ -147,7 +150,7 @@ fn setup_system(mut commands: Commands, asset_server: Res<AssetServer>) {
     let rays = cast_rays(Vec2::new(X, Y), points, NUM_RAYS);
     commands.spawn_bundle(GeometryBuilder::build_as(
         &rays,
-        DrawMode::Stroke(StrokeMode::new(Color::RED, 1.0)),
+        DrawMode::Stroke(StrokeMode::new(Color::hex("6c99bb").unwrap(), 1.0)),
         Transform::default(),
     ));
 }
