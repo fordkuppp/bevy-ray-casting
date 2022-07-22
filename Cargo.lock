@@ -115,6 +115,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "array_builder"
+version = "0.1.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "41b4889449b3c4d1813e5a5882ac706e88ae1ceeacc7b835a5e459099a597cc8"
+
+[[package]]
+name = "array_iter_tools"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eca6400f530f4ee3d9075bf1bf1e4fed2c1c4bedbd9a56ce7239f748167b191e"
+dependencies = [
+ "array_builder",
+]
+
+[[package]]
 name = "arrayvec"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -212,6 +227,7 @@ dependencies = [
  "bevy",
  "bevy_prototype_lyon",
  "bevy_svg",
+ "iter_num_tools",
  "quick-xml",
 ]
 
@@ -1787,6 +1803,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "iter_num_tools"
+version = "0.6.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7711c6efabc6320687553b58e0c9edc6a2ea8dcabac1c6d371cd544c81c33173"
+dependencies = [
+ "array_iter_tools",
+ "num-traits",
+]
+
+[[package]]
 name = "itoa"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1913,6 +1939,12 @@ name = "libm"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7fc7aa29613bd6a620df431842069224d8bc9011086b1db4c0e0cd47fa03ec9a"
+
+[[package]]
+name = "libm"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "33a33a362ce288760ec6a508b94caaec573ae7d3bbbd91b87aa0bad4456839db"
 
 [[package]]
 name = "libudev-sys"
@@ -2338,6 +2370,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "578ede34cf02f8924ab9447f50c28075b4d3e5b269972345e7e0372b38c6cdcd"
 dependencies = [
  "autocfg",
+ "libm 0.2.2",
 ]
 
 [[package]]
@@ -2973,7 +3006,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7b0dc6d20ce137f302edf90f9cd3d278866fd7fb139efca6f246161222ad6d87"
 dependencies = [
  "lazy_static",
- "libm",
+ "libm 0.1.4",
 ]
 
 [[package]]
