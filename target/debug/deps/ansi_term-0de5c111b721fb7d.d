@@ -1,0 +1,13 @@
+c:\Users\patsa\Documents\GitHub\bevy_ray_casting\target\debug\deps\ansi_term-0de5c111b721fb7d.rmeta: C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\lib.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\ansi.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\style.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\difference.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\display.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\write.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\windows.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\util.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\debug.rs
+
+c:\Users\patsa\Documents\GitHub\bevy_ray_casting\target\debug\deps\ansi_term-0de5c111b721fb7d.d: C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\lib.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\ansi.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\style.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\difference.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\display.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\write.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\windows.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\util.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\debug.rs
+
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\lib.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\ansi.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\style.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\difference.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\display.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\write.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\windows.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\util.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\ansi_term-0.12.1\src\debug.rs:

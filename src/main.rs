@@ -2,12 +2,17 @@ use bevy::{math::vec2, prelude::*};
 use bevy_prototype_lyon::prelude::*;
 use bevy_svg::prelude::*;
 use iter_num_tools::lin_space;
+use quick_xml::events::Event;
+use quick_xml::Reader;
+use std::fs;
+use rayon::ThreadPoolBuilder;
+use std::time::Instant;
 
 const WIDTH: f32 = 500.;
 const HEIGHT: f32 = 500.;
 const X: f32 = 0.;
 const Y: f32 = 0.;
-const NUM_RAYS: usize = 360;
+const NUM_RAYS: usize = 360000;
 
 fn main() {
     App::new()
@@ -23,17 +28,15 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugin(ShapePlugin)
         .add_plugin(bevy_svg::prelude::SvgPlugin)
-        .add_startup_system(setup_system)
+        // Uncomment/Comment to benchmark
+        // .add_startup_system(setup_system)
+        .add_startup_system(setup_system_par)
         .run();
 }
 
 // ! Work with only "line" element, and only if the first 4 attributes are x1,y1,x2,y2 !
 // TODO: Make it so that it actually work.
 fn get_points(file: &str) -> Vec<(Vec2, Vec2)> {
-    use quick_xml::events::Event;
-    use quick_xml::Reader;
-    use std::fs;
-
     let file = fs::read_to_string(file).unwrap();
     let mut reader = Reader::from_str(&file);
     reader.trim_text(true);
@@ -116,28 +119,9 @@ fn get_intersect(ray: (Vec2, Vec2), walls: Vec<(Vec2, Vec2)>) -> Option<Vec2> {
     }
 }
 
-fn cast_rays(origin: Vec2, points: Vec<(Vec2, Vec2)>, num: usize) -> Path {
-    let dest_angle = lin_space(0.0..360.0, num).collect::<Vec<f32>>();
-    let max_size = WIDTH.max(HEIGHT) as u16;
-
-    let mut count = 0_usize;
-    let mut path_builder = PathBuilder::new();
-    while count < num {
-        // TODO: make it parallel!!!
-        let dest_coord = direction_to_coord(max_size, dest_angle[count]);
-        let final_dest = get_intersect((origin, dest_coord), points.clone());
-
-        path_builder.move_to(origin);
-        match final_dest {
-            Some(_) => path_builder.line_to(final_dest.unwrap()),
-            None => path_builder.line_to(dest_coord),
-        };
-        count += 1;
-    }
-    path_builder.build()
-}
-
 fn setup_system(mut commands: Commands, asset_server: Res<AssetServer>) {
+    let now = Instant::now();
+
     let svg = asset_server.load("image.svg");
     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
     commands.spawn_bundle(Svg2dBundle {
@@ -147,10 +131,68 @@ fn setup_system(mut commands: Commands, asset_server: Res<AssetServer>) {
     });
 
     let points = get_points("assets/image.svg");
-    let rays = cast_rays(Vec2::new(X, Y), points, NUM_RAYS);
+    let dest_angle = lin_space(0.0..360.0, NUM_RAYS).collect::<Vec<f32>>();
+    let max_size = WIDTH.max(HEIGHT) as u16;
+
+    let mut count = 0_usize;
+    let mut path_builder = PathBuilder::new();
+    while count < NUM_RAYS {
+        let dest_coord = direction_to_coord(max_size, dest_angle[count]);
+        let final_dest = get_intersect((Vec2::new(X, Y), dest_coord), points.clone());
+
+        path_builder.move_to(Vec2::new(X, Y));
+        match final_dest {
+            Some(_) => path_builder.line_to(final_dest.unwrap()),
+            None => path_builder.line_to(dest_coord),
+        };
+        count += 1;
+    }
     commands.spawn_bundle(GeometryBuilder::build_as(
-        &rays,
+        &path_builder.build(),
         DrawMode::Stroke(StrokeMode::new(Color::hex("6c99bb").unwrap(), 1.0)),
         Transform::default(),
     ));
+
+    println!("seq= {:?}s", now.elapsed());
+}
+
+fn setup_system_par(mut commands: Commands, asset_server: Res<AssetServer>) {
+    let now = Instant::now();
+
+    let svg = asset_server.load("image.svg");
+    commands.spawn_bundle(OrthographicCameraBundle::new_2d());
+    commands.spawn_bundle(Svg2dBundle {
+        svg,
+        origin: Origin::Center,
+        ..Default::default()
+    });
+
+    let points = get_points("assets/image.svg");
+    let dest_angle = lin_space(0.0..360.0, NUM_RAYS).collect::<Vec<f32>>();
+    let max_size = WIDTH.max(HEIGHT) as u16;
+
+    let pool = ThreadPoolBuilder::new()
+        .num_threads(num_cpus::get())
+        .build()
+        .unwrap();
+    let mut path_builder = PathBuilder::new();
+    pool.install(|| {
+        for angle in dest_angle.iter().take(NUM_RAYS) {
+            let dest_coord = direction_to_coord(max_size, *angle);
+            let final_dest = get_intersect((Vec2::new(X, Y), dest_coord), points.clone());
+
+            path_builder.move_to(Vec2::new(X, Y));
+            match final_dest {
+                Some(_) => path_builder.line_to(final_dest.unwrap()),
+                None => path_builder.line_to(dest_coord),
+            };
+        }
+    });
+    commands.spawn_bundle(GeometryBuilder::build_as(
+        &path_builder.build(),
+        DrawMode::Stroke(StrokeMode::new(Color::hex("6c99bb").unwrap(), 1.0)),
+        Transform::default(),
+    ));
+
+    println!("par= {:?}s", now.elapsed());
 }

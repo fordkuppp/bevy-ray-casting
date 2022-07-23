@@ -1,0 +1,13 @@
+c:\Users\patsa\Documents\GitHub\bevy_ray_casting\target\debug\deps\stretch-190b211bef3af476.rmeta: C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\lib.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\geometry.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\node.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\number.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\result.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\style.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\algo.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\forest.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\id.rs
+
+c:\Users\patsa\Documents\GitHub\bevy_ray_casting\target\debug\deps\stretch-190b211bef3af476.d: C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\lib.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\geometry.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\node.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\number.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\result.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\style.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\algo.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\forest.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\id.rs
+
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\lib.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\geometry.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\node.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\number.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\result.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\style.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\algo.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\forest.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\stretch-0.3.2\src\id.rs:

@@ -1,0 +1,12 @@
+c:\Users\patsa\Documents\GitHub\bevy_ray_casting\target\debug\deps\quick_xml-41cefe242cf05e5a.rmeta: C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\lib.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\errors.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\escapei.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\events\mod.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\events\attributes.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\reader.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\utils.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\writer.rs
+
+c:\Users\patsa\Documents\GitHub\bevy_ray_casting\target\debug\deps\quick_xml-41cefe242cf05e5a.d: C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\lib.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\errors.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\escapei.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\events\mod.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\events\attributes.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\reader.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\utils.rs C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\writer.rs
+
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\lib.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\errors.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\escapei.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\events\mod.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\events\attributes.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\reader.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\utils.rs:
+C:\Users\patsa\.cargo\registry\src\github.com-1ecc6299db9ec823\quick-xml-0.23.0\src\writer.rs:
